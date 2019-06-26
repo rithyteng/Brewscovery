@@ -2,11 +2,8 @@ from django.shortcuts import render, HttpResponse,redirect
 from .models import users
 import bcrypt
 from django.contrib.messages import error
-<<<<<<< HEAD
 import json
 import requests
-=======
->>>>>>> 1548ee2665fb10a75ff43d3324ed8f848ccf43c1
 
 def index(request):
     return render(request,'myapp/index.html')
@@ -75,7 +72,6 @@ def logout(request):
     # del request.session['userid']
     return redirect('/')
 
-<<<<<<< HEAD
 
 
 
@@ -161,5 +157,3 @@ def searching2(request):
     }
     return render(request,'myapp/searchresult.html',context)
     
-=======
->>>>>>> 1548ee2665fb10a75ff43d3324ed8f848ccf43c1
