@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="myapp/css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Add Your Brew</title>
+    {% load static %}
+      <link rel="stylesheet" href="{% static 'myapp/css/style.css' %}">
+
+
+</head>
+
+
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Add Your Brew</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <a class="btn btn-primary" href="/">Home</a>
+    </nav>
+
+
+
+
+    <div class="formhold">
+        <form class="forming"action="/addbrew" method="POST" >
+            {% csrf_token %}
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <div class="form-group">
+                <label for="brewtype">Brew Name:</label>
+                <input type="text" name ="beer" id="brewtype" class="form-control" placeholder="The brew of your choice">
+
+            </div>
+            <div class="form-group">
+                <label for="abv">Alcohol Content(ABV):</label>
+                <input type="text" name="abv" id="abv" class="form-control" placeholder="How drunk you tryin to get">
+
+            </div>
+            <div class="form-group">
+                <label for="bitter">Bitterness(IBU):</label>
+                <input type="text" name="ibu" id="bitter" class="form-control" placeholder="How bitter or sweet is this brew">
+            </div>
+            <div class="form-group">
+                <label for="brewer">Brewery:</label>
+                <input type="text" name="brewery" id="brewery" class="form-control" placeholder="Where is this coming from">
+            </div>
+
+            <div class="form-group">
+                <label for="type">Type:</label>
+                <select name="category" id="type">
+
+                    <option value="lager">Lager</option>
+                    <option value="ale">Ale</option>
+                    <option value="sour">Sour</option>
+                    <option value="stout">Stout</option>
+                    <option value="pilsner">Pilsner</option>
+                    <option value="ipa">IPA</option>
+
+
+                </select>
+            </div>
+
+            <input type="submit" class="btn btn-dark" value="Add Yo Brew">
+
+        </form>
+    </div>
+
+
+</body>
+
+
+</html>
