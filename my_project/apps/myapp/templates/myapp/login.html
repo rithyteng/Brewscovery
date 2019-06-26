@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Log In</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        *{
+            margin-left:5px;
+        }
+    .box1{
+        border:1px solid black;
+        padding:10px;
+        width:35%;
+        font-size:20px;
+        text-align: right;
+    }
+
+    input{
+        width:60%;
+    }
+
+    .errors{
+        color:red;
+    }
+<<<<<<< HEAD
+    .box3{
+        display:inline-block;
+    }
+    .box2{
+        display:inline-block;
+        vertical-align: top;
+        margin-left:100px;
+        margin-top:10px;
+    }
+=======
+>>>>>>> 1548ee2665fb10a75ff43d3324ed8f848ccf43c1
+    </style>
+</head>
+<body>
+    <div class='errors'>
+        {% if messages %}
+        {% for message in messages %}
+        <p>{{ message }}</p>
+        {% endfor %}
+        {% endif %}
+    </div>
+<<<<<<< HEAD
+    <div class='header'>
+            <div class='box3'>
+                <h1>Log In</h1>
+            </div>
+            <div class='box2'> 
+                <a href='/' class='btn btn-outline-primary'>Home</a>
+            </div>
+    
+    </div>
+=======
+    <h1>Log In</h1>
+>>>>>>> 1548ee2665fb10a75ff43d3324ed8f848ccf43c1
+    <form action='/loginp' method='POST'>
+        {% csrf_token %}
+        <div class='box1'>
+            User Name: <input type='text' name='username'>
+            <p></p>
+            Password: <input type='password' name='password'>
+            <p></p>
+            <button type='submit' class="btn btn-primary">Log In</button>
+        </div>
+
+    </form>
+</body>
+</html>
