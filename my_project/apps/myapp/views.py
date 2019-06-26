@@ -4,6 +4,7 @@ import bcrypt
 from django.contrib.messages import error
 import json
 import requests
+from django.contrib import messages
 
 def index(request):
     return render(request,'myapp/index.html')
@@ -72,7 +73,25 @@ def logout(request):
     # del request.session['userid']
     return redirect('/')
 
+def add(request):
+    return render(request, 'myapp/add.html')
 
+def addbrew(request):
+    errors = users.objects.form_validator(request.POST)
+    if len(errors) > 0:
+        for key, value in errors.items():
+            messages.error(request, value)
+        return render (request, 'myapp/add.html')
+    return redirect('/dashboard')
+
+def ales(request):
+    return render(request, 'myapp/ales.html')
+def lagers(request):
+    return render(request, 'myapp/lagers.html')
+def malts(request):
+    return render(request, 'myapp/malts.html')
+def stouts(request):
+    return render(request, 'myapp/stouts.html')
 
 
 

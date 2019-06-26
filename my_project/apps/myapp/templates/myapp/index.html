@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Dokutementasion</title>
+    <title>Home Page</title>
     {% load static %}
     <style>
         /* *{
@@ -19,8 +19,12 @@
     .btn-outline-primary{
         margin-left:10px;
     }
-    body{
+    .body{
         background-image: url('http://offpistetours.com/site/wp-content/uploads/2019/02/slider-1-comp.jpg');
+        height: 400px;
+    }
+    .row{
+      display: inline-block;
     }
     </style>
 </head>
@@ -30,7 +34,7 @@
                   <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-                  <a class="navbar-brand" href="/"><img src="{% static "myapp/images/beerlogos.png" %}"/ width="100px" height="100px"></a>
+                  <a class="navbar-brand" href="/"><img src="{% static "myapp/images/brewscovery_logo.png" %}"/ width="100px" height="100px"></a>
                   <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item active">
                       <a class="btn btn-outline-primary" href="/help">Help <span class="sr-only">(current)</span></a>
@@ -55,6 +59,55 @@
                   </form>
                 </div>
     </nav>
+    <div class="body">
+    </div>
+    <div class="discover1">
+      <h3>Discover different types of brews here!</h3>
+      <div class="row">
+        <div class="col-sm-4" >
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Ale</h5>
+              <p class="card-text">Categorized as a top-fermenting beer, it uses Saccharomyces cerevisia yeast. It has hints of fruit or spices with a hoppy finish. Definitely not a bad option to quench your thrist</p>
+              <a href="/ales" class="btn btn-primary">Our ales</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Lager</h5>
+              <p class="card-text">Categorized as a bottom-fermenting beer, it uses Saccharomyces uvarum yeast. This gives the beer a more crisp and refreshing taste. One of the must haves at any special events.</p>
+              <a href="/lagers" class="btn btn-primary">Our lagers</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Malt</h5>
+              <p class="card-text">Made from malted barley (the wheat to make beers). This gives the beer it's special color. These tend to be sweater with a hint of caramel, toffee, and nuts. Dark but rich in flavor.</p>
+              <a href="/malts" class="btn btn-primary">Our malts</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Stout</h5>
+              <p class="card-text">Categorized as a top-fermenting beer, it is a very dark beer and has many variations including porter, milk stout, imperial stout. Best known is Guiness dry stout. It has a very rich, stouty, and coffee like tastes.</p>
+              <a href="/stouts" class="btn btn-primary">Our stouts</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
 
 </body>

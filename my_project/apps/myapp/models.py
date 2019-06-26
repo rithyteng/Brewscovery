@@ -9,7 +9,7 @@ class usersManager(models.Manager):
 
     def display_detailed_values(self):
         return [u.__dict__ for u in self.all()]
-    
+    #register user
     def register_user(self,form):
         hashed=bcrypt.hashpw(form['password'].encode(),bcrypt.gensalt())
         the_user=self.create(firstname=form['firstname'],lastname=form['lastname'],email=form['email'],username=form['username'],password=hashed)
@@ -18,7 +18,7 @@ class usersManager(models.Manager):
 
     def basicValid(self,form):
         errors=[]
-
+        #validates registration form
         if len(form['username'])<6:
             errors.append('Username Requires At Least 6 Characters ')
         if len(form['firstname'])<2:
@@ -39,7 +39,8 @@ class usersManager(models.Manager):
         if result2:
             errors.append('Username is already in use')
         return errors
-    
+
+    #validate login, checks if username is in db along w pw
     def loginValid(self,form):
         errors=[]
         checkemail=self.filter(username=form['username'])
@@ -55,6 +56,19 @@ class usersManager(models.Manager):
                 errors.append('Invalid Username or Password')
         return errors
 
+    def form_validator(self, postData):
+        errors = {}
+        if len(postData['beer']) < 3:
+            errors['beer'] = "Beer must be at least 3 characters"
+        if len(postData['category']) < 3:
+            errors['category'] = "Category should be at least 3 characters"
+        if len(postData['brewery']) < 3:
+            errors['brewery'] = "Brewery should be at least 3 characters"
+        if len(postData['abv']) < 2:
+            errors['abv'] = "Please input ABV"
+        if len(postData['ibu']) < 1:
+            errors['ibu'] = "Please input IBU value"
+        return errors
 
 
 class users(models.Model):
@@ -69,7 +83,27 @@ class users(models.Model):
     objects=usersManager()
 
 
+class beers(models.Model):
+    name = models.CharField(max_length = 45)
+    category = models.CharField(max_length = 45)
+    abv = models.DecimalField(max_digits=2, decimal_places=1)
+    ibu = models.IntegerField()
+    brewery = models.CharField(max_length = 45)
+    users = models.ForeignKey(users, related_name="beer")
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    rating = models.DecimalField(max_digits=2, decimal_places=1)
+
+
+class breweries(models.Model):
+    name = models.CharField(max_length=45)
+    location = models.CharField(max_length=45)
+    rating = models.IntegerField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
 
 
-# Create your models here.
+
+
+
