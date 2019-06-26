@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Skip to content
  
 Search or jump to…
@@ -16,6 +17,8 @@ Brewscovery/.gitignore
 bd71033 7 minutes ago
 105 lines (84 sloc)  1.17 KB
     
+=======
+>>>>>>> bd710338e9695a096bfb7c0b87f0e2da3edce8c8
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -120,6 +123,7 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+<<<<<<< HEAD
 © 2019 GitHub, Inc.
 Terms
 Privacy
@@ -132,3 +136,5 @@ API
 Training
 Blog
 About
+=======
+>>>>>>> bd710338e9695a096bfb7c0b87f0e2da3edce8c8
