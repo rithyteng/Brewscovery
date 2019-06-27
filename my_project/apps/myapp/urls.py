@@ -17,5 +17,6 @@ urlpatterns = [
     url(r'^malts$', views.malts), 
     url(r'^lagers$', views.lagers), 
     url(r'^stouts$', views.stouts), 
+    url(r'^remove$',views.remove),
     
     ]
