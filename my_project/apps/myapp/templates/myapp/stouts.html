@@ -7,6 +7,15 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>STOUTS</h1>
+    <h1>All of our Stouts</h1>
+    <a href="/">Home</a>
+    <a href="/thelogin">Dashboard</a>
+    <ul>
+        {% for stout in all_stouts %}
+        <li>
+            {{stout.name}}
+        </li>
+        {% endfor %}
+    </ul>
 </body>
 </html>

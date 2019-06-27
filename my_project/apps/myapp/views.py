@@ -6,6 +6,7 @@ import json
 import requests
 from django.contrib import messages
 from . import models
+from django.db.models import Q
 
 def index(request):
     return render(request,'myapp/index.html')
@@ -90,13 +91,25 @@ def addbrew(request):
     return redirect('/thelogin')
 
 def ales(request):
-    return render(request, 'myapp/ales.html')
+    context = {
+        "all_ales": models.beers.objects.filter(Q(category="ipa") | (Q(category="ale")))
+    }
+    return render(request, 'myapp/ales.html', context)
 def lagers(request):
-    return render(request, 'myapp/lagers.html')
+    context = {
+        "all_lagers": models.beers.objects.filter(category="lager")
+    }
+    return render(request, 'myapp/lagers.html', context)
 def malts(request):
-    return render(request, 'myapp/malts.html')
+    context = {
+        "all_malts": models.beers.objects.filter(category="malt")
+    }
+    return render(request, 'myapp/malts.html', context)
 def stouts(request):
-    return render(request, 'myapp/stouts.html')
+    context = {
+        "all_stouts": models.beers.objects.filter(category="stout")
+    }
+    return render(request, 'myapp/stouts.html', context)
 
 
 

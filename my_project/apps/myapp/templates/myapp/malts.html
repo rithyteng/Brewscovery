@@ -7,6 +7,15 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>MALTS</h1>
+    <h1>All of our malts</h1>
+    <a href="/">Home</a>
+    <a href="/thelogin">Dashboard</a>
+    <ul>
+        {% for malt in all_malts %}
+        <li>
+            {{malt.name}}
+        </li>
+        {% endfor %}
+    </ul>
 </body>
 </html>
