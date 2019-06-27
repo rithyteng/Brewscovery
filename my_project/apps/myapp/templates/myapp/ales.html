@@ -5,14 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    {% load static %}
+    
+
 </head>
 <body>
     <h1>All of our Ales</h1>
     <a href="/">Home</a>
-    <a href="/thelogin">Dashboard</a>
+    <a href="/thelogin">Dashboard</a><br>
+
+    <p>{% for ales in all_ales %}</p>
+    <p>{{ales.name}}</p>
+    <p>{{ales.category}}</p>
+    {{ales.abv}}%
+    {{ales.ibu}}%
+    <img src="{% static "myapp/images/ale.png" %}" width="200px" height="200px" alt="Ale" >
+    
+    {% endfor %}
+
+
     <ul>
         {% for ales in all_ales %}
+
         <li>{{ales.name}}</li>
+        <li>{{ales.category}}</li>
+        <li>{{ales.abv}}%</li>
+        <li>{{ales.ibu}}%</li>
+        <li>{{ales.brewery}}</li>
+        <li>{{ales.rating}}</li>
         {% endfor %}
     </ul>
 </body>

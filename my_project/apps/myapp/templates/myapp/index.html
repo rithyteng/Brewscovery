@@ -26,6 +26,31 @@
     .row{
       display: inline-block;
     }
+    h3{
+      text-align: center;
+    }
+    img{
+      margin-left: 85px;
+
+
+    }
+    #movetag{
+      text-align: left;
+      
+    }
+    h5{
+      text-align: center;
+    }
+    p{
+      text-indent: 30px;
+    }
+    span{
+      color: #000000;
+      background: #FFFFFF;
+      text-shadow: 2px 2px 0 #bcbcbc, 4px 4px 0 #9c9c9c;
+    }
+    
+    
     </style>
 </head>
 <body>
@@ -67,9 +92,11 @@
         <div class="col-sm-4" >
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Ale</h5>
+              <h5 class="card-title"><span>Ale</span></h5>
+              <img src="{% static "myapp/images/ale.png" %}"  width="200px" height="200px" alt="Ale" >
               <p class="card-text">Categorized as a top-fermenting beer, it uses Saccharomyces cerevisia yeast. It has hints of fruit or spices with a hoppy finish. Definitely not a bad option to quench your thrist</p>
-              <a href="/ales" class="btn btn-primary">Our ales</a>
+              
+              <a id="movetag" href="/ales" class="btn btn-primary">Our ales</a>
             </div>
           </div>
         </div>
@@ -78,7 +105,8 @@
         <div class="col-sm-4">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Lager</h5>
+              <h5 class="card-title"><span>Lager</span></h5>
+              <img src="{% static "myapp/images/lager.jpg" %}"  width="200px" height="300px" alt="Lager" >
               <p class="card-text">Categorized as a bottom-fermenting beer, it uses Saccharomyces uvarum yeast. This gives the beer a more crisp and refreshing taste. One of the must haves at any special events.</p>
               <a href="/lagers" class="btn btn-primary">Our lagers</a>
             </div>
@@ -89,7 +117,8 @@
         <div class="col-sm-4">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Malt</h5>
+              <h5 class="card-title"><span>Malt</span></h5>
+              <img src="{% static "myapp/images/malt.jpg" %}"  width="200px" height="200px" alt="Lager" >
               <p class="card-text">Made from malted barley (the wheat to make beers). This gives the beer it's special color. These tend to be sweater with a hint of caramel, toffee, and nuts. Dark but rich in flavor.</p>
               <a href="/malts" class="btn btn-primary">Our malts</a>
             </div>
@@ -97,10 +126,11 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-sm-4">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Stout</h5>
+        <div  class="col-sm-4">
+          <div  class="card">
+            <div  class="card-body">
+              <h5 class="card-title"><span>Stout</span></h5>
+              <img src="{% static "myapp/images/stout.jpg" %}"  width="200px" height="200px" alt="Lager" >
               <p class="card-text">Categorized as a top-fermenting beer, it is a very dark beer and has many variations including porter, milk stout, imperial stout. Best known is Guiness dry stout. It has a very rich, stouty, and coffee like tastes.</p>
               <a href="/stouts" class="btn btn-primary">Our stouts</a>
             </div>
