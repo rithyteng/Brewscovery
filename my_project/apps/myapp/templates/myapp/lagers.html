@@ -7,6 +7,15 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>test</h1>
+    <h1>All of our lagers</h1>
+    <a href="/">Home</a>
+    <a href="/thelogin">Dashboard</a>
+    <ul>
+        {% for lager in all_lagers %}
+        <li>
+            {{lager.name}}
+        </li>
+        {% endfor %}
+    </ul>
 </body>
 </html>
