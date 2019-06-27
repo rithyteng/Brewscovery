@@ -12,7 +12,11 @@
     <a href="/thelogin">Dashboard</a>
     <ul>
         {% for ales in all_ales %}
-        <li>{{ales.name}}</li>
+        
+        <li>
+            <a href="/show/{{ales.id}}">{{ales.name}}</a>
+            <a href="/fave_beer/{{ales.id}}">Add to dashboard</a></li>
+        
         {% endfor %}
     </ul>
 </body>

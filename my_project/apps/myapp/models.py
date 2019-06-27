@@ -89,7 +89,7 @@ class beers(models.Model):
     abv = models.DecimalField(max_digits=2, decimal_places=1)
     ibu = models.DecimalField(max_digits=3, decimal_places=1)
     brewery = models.CharField(max_length = 45)
-    user = models.ForeignKey(users, related_name="beer")
+    user = models.ManyToManyField(users, related_name="beer")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     rating = models.DecimalField(max_digits=2, decimal_places=1)

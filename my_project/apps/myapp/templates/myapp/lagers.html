@@ -13,7 +13,8 @@
     <ul>
         {% for lager in all_lagers %}
         <li>
-            {{lager.name}}
+            <a href="/show/{{lager.id}}">{{lager.name}}</a>
+            <a href="/fave_beer/{{lager.id}}">Add to dashboard</a></li>
         </li>
         {% endfor %}
     </ul>
