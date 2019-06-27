@@ -5,6 +5,7 @@ from django.contrib.messages import error
 import json
 import requests
 from django.contrib import messages
+from . import models
 
 def index(request):
     return render(request,'myapp/index.html')
@@ -62,6 +63,7 @@ def thelogin(request):
             'myuserfirstname':users.objects.get(id=myid).firstname,
             'myuserlastname':users.objects.get(id=myid).lastname,
             'myuseremail':users.objects.get(id=myid).email,   
+            "all_beers": models.beers.objects.filter(user=request.session['userid'])
         }
     return render(request,'myapp/dashboard.html',context)
 
@@ -82,7 +84,10 @@ def addbrew(request):
         for key, value in errors.items():
             messages.error(request, value)
         return render (request, 'myapp/add.html')
-    return redirect('/dashboard')
+    else:
+        models.beers.objects.create(name=request.POST['beer'], category=request.POST['category'], abv=request.POST['abv'], ibu=request.POST['ibu'], brewery=request.POST['brewery'],rating=request.POST['rate'],user=users.objects.get(id=request.session['userid']))
+        
+    return redirect('/thelogin')
 
 def ales(request):
     return render(request, 'myapp/ales.html')
@@ -140,6 +145,7 @@ def searching(request):
     return render(request,'myapp/searchresult.html',context)
 
 def searching2(request):
+    print(request.POST['beername'])
 
     business_id='edcdC4ixlSjPn50WdwSpBQ'
     #Define the API Key, Define the Endpoint, and deefine the Header
@@ -147,10 +153,11 @@ def searching2(request):
     ENDPOINT='https://api.yelp.com/v3/businesses/search'
     HEADERS = {'Authorization': 'bearer %s' % API_KEY}
     # Define the parameters
-    PARAMETERS = {'term' :'Ballast Point',
+    PARAMETERS = {'term' :request.POST['beername'],
                 'limit':1,
-                'radius':10000,
-                'location': 'Long Beach'}
+                'radius':40000,
+                'categories' : 'Breweries',
+                'location': 'Anaheim'}
 
     response=requests.get(url= ENDPOINT,params=PARAMETERS,headers=HEADERS)
 
