@@ -35,6 +35,10 @@ def signupp(request):
             }
     return render(request,'myapp/reg.html',context)
 
+def remove(request):
+
+    return redirect('/thelogin')
+
 def loginp(request):
     if request.method=='POST':
         login=users.objects.loginValid(request.POST)
@@ -145,41 +149,50 @@ def searching(request):
     return render(request,'myapp/searchresult.html',context)
 
 def searching2(request):
-    print(request.POST['beername'])
+    try:
+        print('00'*20)
+        print(request.POST['beernamez'])
 
-    business_id='edcdC4ixlSjPn50WdwSpBQ'
-    #Define the API Key, Define the Endpoint, and deefine the Header
-    API_KEY='JA-SJIs2e-2ib3JVAqmIMzlWPigODEw0Djc_oKehvjmuvI92e-t-lEmYlZCGW9W3T-En7RQLuTZ9ABm_wLADJ7tw65LamAIjqFiKRA76S7x1kpT6ubtcU1QxVrMSXXYx'
-    ENDPOINT='https://api.yelp.com/v3/businesses/search'
-    HEADERS = {'Authorization': 'bearer %s' % API_KEY}
-    # Define the parameters
-    PARAMETERS = {'term' :request.POST['beername'],
-                'limit':1,
-                'radius':40000,
-                'categories' : 'Breweries',
-                'location': 'Anaheim'}
+        business_id='edcdC4ixlSjPn50WdwSpBQ'
+        #Define the API Key, Define the Endpoint, and deefine the Header
+        API_KEY='JA-SJIs2e-2ib3JVAqmIMzlWPigODEw0Djc_oKehvjmuvI92e-t-lEmYlZCGW9W3T-En7RQLuTZ9ABm_wLADJ7tw65LamAIjqFiKRA76S7x1kpT6ubtcU1QxVrMSXXYx'
+        ENDPOINT='https://api.yelp.com/v3/businesses/search'
+        HEADERS = {'Authorization': 'bearer %s' % API_KEY}
+        # Define the parameters
+        PARAMETERS = {'term' :request.POST['beernamez'],
+                    'limit':1,
+                    'radius':40000,
+                    'categories' : 'Breweries',
+                    'location': 'Anaheim'}
 
-    response=requests.get(url= ENDPOINT,params=PARAMETERS,headers=HEADERS)
+        response=requests.get(url= ENDPOINT,params=PARAMETERS,headers=HEADERS)
 
-    business_data=response.json()
-    
-    for biz in business_data['businesses']:
-        rating=(biz["rating"])
-        name=(biz['name'])
-        img=(biz['image_url'])
-        url=(biz['url'])
-        location=(biz['location'])
-        price=(biz['price'])
-        print(type(img))
+        business_data=response.json()
+        
+        for biz in business_data['businesses']:
+            rating=(biz["rating"])
+            name=(biz['name'])
+            img=(biz['image_url'])
+            url=(biz['url'])
+            location=(biz['location'])
+            price=(biz['price'])
+            phone=(biz['phone'])
+            print(type(img))
 
-    context={
-        'pricez':price,
-        'locationz':location,
-        'namez':name,
-        'ratingz':rating,
-        'imgz':img,
-        'urlz':url,
+        context={
+            'pricez':price,
+            'locationz':location,
+            'namez':name,
+            'ratingz':rating,
+            'imgz':img,
+            'urlz':url,
+            'phonez':phone
 
-    }
-    return render(request,'myapp/searchresult.html',context)
+        }
+        return render(request,'myapp/searchresult.html',context)
+    except:
+        errors={'error':'Brewery Does Not Exist'}
+        for key, value in errors.items():
+            messages.error(request, value)
+        return redirect('/thelogin')
     
