@@ -64,7 +64,7 @@ class usersManager(models.Manager):
             errors['category'] = "Category should be at least 3 characters"
         if len(postData['brewery']) < 3:
             errors['brewery'] = "Brewery should be at least 3 characters"
-        if len(postData['abv']) < 2:
+        if len(postData['abv']) < 1:
             errors['abv'] = "Please input ABV"
         if len(postData['ibu']) < 1:
             errors['ibu'] = "Please input IBU value"
@@ -87,9 +87,9 @@ class beers(models.Model):
     name = models.CharField(max_length = 45)
     category = models.CharField(max_length = 45)
     abv = models.DecimalField(max_digits=2, decimal_places=1)
-    ibu = models.IntegerField()
+    ibu = models.DecimalField(max_digits=3, decimal_places=1)
     brewery = models.CharField(max_length = 45)
-    users = models.ForeignKey(users, related_name="beer")
+    user = models.ForeignKey(users, related_name="beer")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     rating = models.DecimalField(max_digits=2, decimal_places=1)

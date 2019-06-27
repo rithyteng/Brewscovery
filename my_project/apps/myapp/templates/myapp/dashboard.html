@@ -37,10 +37,13 @@
 
         <div class='add'>
             <a class='btn btn-primary' href='/add'>Add Your Own Brew</a>
+            <a class='btn btn-primary' href='/'>Home</a>
         </div>
     <hr>
 
     <h3>Favorite Beers: </h3>
+    <form action='/searching2' method='POST'>
+      {% csrf_token %}
     <!-- <form action='/searching'> -->
     <table class="table table-bordered">
             <thead>
@@ -50,6 +53,7 @@
                 <th scope="col">Type</th>
                 <th scope="col">ABV %</th>
                 <th scope="col">IBU</th>
+                <th scope='col'>Rating</th>
               </tr>
             </thead>
             <tbody>
@@ -59,24 +63,20 @@
                 <td>India Pale Ale</td>
                 <td>7%</td>
                 <td>70 IBUS</td>
+              {% for beer in all_beers %}
               </tr>
-              <tr>
-                <th scope="row">SOUR WENCH</th>
-                <td>Ballast Point</td>
-                <td>Blackberry Ale</td>
-                <td>7%</td>
-                <td>10 IBUS</td>
+                <th scope="row">{{beer.name}}</th>
+                <td><button type='submit'>{{beer.brewery}}</button></td>
+                <input type="hidden" name='beername' value='{{beer.brewery}}'>
+                <td>{{beer.category}}</td>
+                <td>{{beer.abv}}</td>
+                <td>{{beer.ibu}}</td>
+                <td>{{beer.rating}}</td>
               </tr>
-              <tr>
-                <th scope="row">The Patsy</th>
-                <td>Barley Forge</td>
-                <td>Coconut Rye Stout</td>
-                <td>6.6%</td>
-                <td>37 IBUS</td>
-              </tr>
+              {% endfor %}
             </tbody>
           </table>
-          <!-- </form> -->
+          </form>
     
 </body>
 </html>
