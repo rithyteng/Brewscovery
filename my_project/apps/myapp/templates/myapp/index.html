@@ -9,9 +9,23 @@
     {% load static %}
     <style>
         /* *{
-            margin-left:3px;
-            margin-top:10px;
+            border:1px solid black;
         } */
+    .row{
+      /* background-color: #3c81a4; */
+      /* opacity: .8; */
+      filter: alpha(opacity=1);
+      margin-left:20rem;
+    }
+
+    .card {
+      background-color: rgb(255,255,255,0.35);
+      min-height: 230px;
+    }
+
+    .row_divide{
+      margin-top: 20px;
+    }
     .nav{
         height:100px;
         background-color: lightyellow;
@@ -19,13 +33,41 @@
     .btn-outline-primary{
         margin-left:10px;
     }
-    .body{
+    body{
         background-image: url('http://offpistetours.com/site/wp-content/uploads/2019/02/slider-1-comp.jpg');
-        height: 400px;
+        background-repeat: no-repeat;
+        background-size:cover;
+        height:auto;
+        
     }
-    .row{
+    /* .row{
       display: inline-block;
+    } */
+    .box1{
+      margin-left:10px;
+      display:inline-block;
+      border: 1px solid black;
+      width:45%;
     }
+    .box2{
+      margin-left:10px;
+      display:inline-block;
+      border: 1px solid black;
+      width:45%;
+    }
+    .box1 h4, .box1 p{
+      margin-left:5px;
+      margin-top:5px;
+    }
+    .box2 h4, .box2 p{
+      margin-left:5px;
+      margin-top:5px;
+    }
+
+    .discover1{
+      text-align: center;
+    }
+  
     </style>
 </head>
 <body>
@@ -62,9 +104,9 @@
     <div class="body">
     </div>
     <div class="discover1">
-      <h3>Discover different types of brews here!</h3>
+      <h3>Discover Your Brews Here!</h3>
       <div class="row">
-        <div class="col-sm-4" >
+        <div class="col-sm-5" >
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Ale</h5>
@@ -73,9 +115,7 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-4">
+        <div class="col-sm-5">
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Lager</h5>
@@ -84,9 +124,9 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-4">
+        <!-- divides the images -->
+        <div class="w-100 row_divide"></div> 
+        <div class="col-sm-5">
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Malt</h5>
@@ -95,9 +135,7 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-4">
+        <div class="col-sm-5">
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Stout</h5>
@@ -108,6 +146,23 @@
         </div>
       </div>
     </div>
+    <!-- <div class='box1'>
+      <div class='title'>
+        <h4><a href="/ales" class="btn btn-primary"> Our Ales </a></h4>
+      </div>
+      <div class='textbody'>
+        <p>Categorized as a top-fermenting beer, it uses Saccharomyces cerevisia yeast. It has hints of fruit or spices with a hoppy finish. Definitely not a bad option to quench your thrist</p>
+      </div>
+    </div>
+
+    <div class='box2'>
+      <div class='title'>
+          <h4><a href="/lagers" class="btn btn-primary">Our Lagers</a></h4>
+      </div>
+      <div class='textbody'>
+        <p>Categorized as a bottom-fermenting beer, it uses Saccharomyces uvarum yeast. This gives the beer a more crisp and refreshing taste. One of the must haves at any special events.</p>
+      </div>
+    </div> -->
 
 
 </body>
