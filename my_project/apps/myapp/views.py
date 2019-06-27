@@ -36,9 +36,6 @@ def signupp(request):
             }
     return render(request,'myapp/reg.html',context)
 
-def remove(request):
-
-    return redirect('/thelogin')
 
 def loginp(request):
     if request.method=='POST':
@@ -90,8 +87,21 @@ def addbrew(request):
             messages.error(request, value)
         return render (request, 'myapp/add.html')
     else:
-        models.beers.objects.create(name=request.POST['beer'], category=request.POST['category'], abv=request.POST['abv'], ibu=request.POST['ibu'], brewery=request.POST['brewery'],rating=request.POST['rate'],user=users.objects.get(id=request.session['userid']))
-        
+        user = users.objects.get(id=request.session['userid'])
+        new_beer = models.beers.objects.create(name=request.POST['beer'], category=request.POST['category'], abv=request.POST['abv'], ibu=request.POST['ibu'], brewery=request.POST['brewery'],rating=request.POST['rate'])
+        user.beer.add(new_beer)
+    return redirect('/thelogin')
+
+def fave_beer(request, beer_id):
+    user = users.objects.get(id=request.session['userid'])
+    fave = models.beers.objects.get(id=beer_id)
+    user.beer.add(fave)    
+    return redirect('/thelogin')
+
+def remove(request, user_id):
+    user = models.users.objects.get(id = request.session['userid'])
+    remove_beer = models.beers.objects.get(id = user_id)
+    user.beer.remove(remove_beer)
     return redirect('/thelogin')
 
 def ales(request):
@@ -114,6 +124,12 @@ def stouts(request):
         "all_stouts": models.beers.objects.filter(category="stout")
     }
     return render(request, 'myapp/stouts.html', context)
+
+def show(request, beer_id):
+    context = {
+        "beer_info": models.beers.objects.get(id=beer_id)
+    }
+    return render(request, 'myapp/show.html', context)
 
 
 

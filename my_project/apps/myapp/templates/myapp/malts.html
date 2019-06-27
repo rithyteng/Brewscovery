@@ -13,7 +13,8 @@
     <ul>
         {% for malt in all_malts %}
         <li>
-            {{malt.name}}
+            <a href="/show/{{malt.id}}">{{malt.name}}</a>
+            <a href="/fave_beer/{{malt.id}}">Add to dashboard</a></li>
         </li>
         {% endfor %}
     </ul>
