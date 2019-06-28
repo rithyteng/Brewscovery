@@ -5,17 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
+<style>
+    li{
+        color: black;
+    }
+    #box{
+        display: inline-block;
+        margin: 5px;
+        height: 250px;
+        width: 300px;
+        vertical-align: top;
+    }
+</style>
 <body>
-    <h1>All of our lagers</h1>
-    <a href="/">Home</a>
-    <a href="/thelogin">Dashboard</a>
-    <ul>
-        {% for lager in all_lagers %}
-        <li>
-            {{lager.name}}
-        </li>
-        {% endfor %}
-    </ul>
+    <div class="header">
+        <h1>All of our lagers</h1>
+        <a href="/">Home</a>
+        <a href="/thelogin">Dashboard</a>
+    </div>    
+    {% for lager in all_lagers %}
+    <div class="card border-warning mb-3" id="box" style="max-width: 18rem;">
+        <div class="card-header bg-transparent border-warning">{{lager.category}}</div>
+        <div class="card-body text-warning">
+          <h5 class="card-title"><a href="/show/{{lager.id}}">{{lager.name}}</a></h5>
+          <p class="card-text">
+              <ul>
+                  <li>Brewery: {{lager.brewery}}</li>
+              </ul>
+            </p>
+            <div class="card-footer bg-transparent border-warning"></div><a href="/fave_beer/{{lager.id}}">Favorite</a></div>
+    </div>
+    {% endfor %}
 </body>
 </html>

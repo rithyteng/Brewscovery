@@ -111,12 +111,12 @@
               
                 <th scope="row">{{beer.name}}</th>
                 <td><button type='submit' name='beernamez' value='{{beer.brewery}}' class="btn btn-outline-primary">{{beer.brewery}}</button></td>
-                <!-- <input type='hidden' name='beernamez' value='{{beer.brewery}}'> -->
                 <td>{{beer.category}}</td>
                 <td>{{beer.abv}}</td>
                 <td>{{beer.ibu}}</td>
                 <td>{{beer.rating}}</td>
-                <td><button type='button'  class="btn btn-outline-primary" >Remove</button> </td>
+                <td><a class="btn btn-outline-primary" href="/remove/{{beer.id}}">Remove</a> 
+                </td>
               </tr>
             
               {% endfor %}

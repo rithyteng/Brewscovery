@@ -17,6 +17,8 @@ urlpatterns = [
     url(r'^malts$', views.malts), 
     url(r'^lagers$', views.lagers), 
     url(r'^stouts$', views.stouts), 
-    url(r'^remove$',views.remove),
+    url(r'^remove/(?P<user_id>\d+)$',views.remove),
+    url(r'^fave_beer/(?P<beer_id>\d+)$',views.fave_beer),
+    url(r'^show/(?P<beer_id>\d+)$',views.show),
     
     ]

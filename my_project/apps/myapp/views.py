@@ -36,9 +36,6 @@ def signupp(request):
             }
     return render(request,'myapp/reg.html',context)
 
-def remove(request):
-
-    return redirect('/thelogin')
 
 def loginp(request):
     if request.method=='POST':
@@ -73,6 +70,7 @@ def thelogin(request):
     return render(request,'myapp/dashboard.html',context)
 
 def logout(request):
+
     try:
         del request.session['userid']
     except:
@@ -84,14 +82,43 @@ def add(request):
     return render(request, 'myapp/add.html')
 
 def addbrew(request):
-    errors = users.objects.form_validator(request.POST)
-    if len(errors) > 0:
-        for key, value in errors.items():
-            messages.error(request, value)
-        return render (request, 'myapp/add.html')
-    else:
-        models.beers.objects.create(name=request.POST['beer'], category=request.POST['category'], abv=request.POST['abv'], ibu=request.POST['ibu'], brewery=request.POST['brewery'],rating=request.POST['rate'],user=users.objects.get(id=request.session['userid']))
-        
+    print('*'*50)
+    try:
+        if int(request.POST['rate'])>1:
+            errors = users.objects.form_validator(request.POST)
+            if len(errors) > 0:
+                for key, value in errors.items():
+                    messages.error(request, value)
+                return render (request, 'myapp/add.html')
+            else:
+                user = users.objects.get(id=request.session['userid'])
+                new_beer = models.beers.objects.create(name=request.POST['beer'], category=request.POST['category'], abv=request.POST['abv'], ibu=request.POST['ibu'], brewery=request.POST['brewery'],rating=request.POST["rate"])
+                user.beer.add(new_beer)
+            return redirect('/thelogin')
+                
+    except:
+        errors='Please Rate Your Drink'
+        error(request,errors)
+        return redirect('/add')
+
+def fave_beer(request, beer_id):
+    try:
+        if not request.session['userid']:
+            return redirect('/login')
+    except:
+        errors={'Please Sign Up or Log In'}
+        for i in errors:
+            error(request,i)
+        return redirect('/login')
+    user = users.objects.get(id=request.session['userid'])
+    fave = models.beers.objects.get(id=beer_id)
+    user.beer.add(fave)    
+    return redirect('/thelogin')
+
+def remove(request, user_id):
+    user = models.users.objects.get(id = request.session['userid'])
+    remove_beer = models.beers.objects.get(id = user_id)
+    user.beer.remove(remove_beer)
     return redirect('/thelogin')
 
 def ales(request):
@@ -114,6 +141,12 @@ def stouts(request):
         "all_stouts": models.beers.objects.filter(category="stout")
     }
     return render(request, 'myapp/stouts.html', context)
+
+def show(request, beer_id):
+    context = {
+        "beer_info": models.beers.objects.get(id=beer_id)
+    }
+    return render(request, 'myapp/show.html', context)
 
 
 

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Beer Information</title>
+</head>
+<body>
+    <div class="header">
+        <h1>{{beer_info.name}} information</h1>
+        <a href="/thelogin">Dashboard</a>
+        <a href="/">Home</a>
+    </div>
+    <ul>
+        <li>
+            Type: {{beer_info.category}}
+        </li>
+        <li>
+            Brewery: {{beer_info.brewery}}
+        </li>
+        <li>
+            IBU: {{beer_info.ibu}}
+        </li>
+        <li>    
+            ABV: {{beer_info.abv}}
+        </li>
+    </ul>
+</body>
+</html>
