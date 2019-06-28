@@ -7,10 +7,15 @@
     <title>Beer Information</title>
 </head>
 <body>
-    <h1>The information for {{beer_info.name}} is below</h1>
-    <a href="/thelogin">Dashboard</a>
-    <a href="/">Home</a>
+    <div class="header">
+        <h1>{{beer_info.name}} information</h1>
+        <a href="/thelogin">Dashboard</a>
+        <a href="/">Home</a>
+    </div>
     <ul>
+        <li>
+            Type: {{beer_info.category}}
+        </li>
         <li>
             Brewery: {{beer_info.brewery}}
         </li>

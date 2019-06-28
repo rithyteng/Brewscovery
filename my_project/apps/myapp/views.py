@@ -100,7 +100,6 @@ def addbrew(request):
         errors='Please Rate Your Drink'
         error(request,errors)
         return redirect('/add')
-   
 
 def fave_beer(request, beer_id):
     try:
