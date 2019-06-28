@@ -82,6 +82,7 @@ def add(request):
 
 def addbrew(request):
     errors = users.objects.form_validator(request.POST)
+    # print(len(request.POST['rate']), "this is length")
     if len(errors) > 0:
         for key, value in errors.items():
             messages.error(request, value)

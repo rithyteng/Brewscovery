@@ -68,6 +68,8 @@ class usersManager(models.Manager):
             errors['abv'] = "Please input ABV"
         if len(postData['ibu']) < 1:
             errors['ibu'] = "Please input IBU value"
+            # if not postData['rate']:
+            # errors['rate'] = "Please input rating"
         return errors
 
 
@@ -86,8 +88,8 @@ class users(models.Model):
 class beers(models.Model):
     name = models.CharField(max_length = 45)
     category = models.CharField(max_length = 45)
-    abv = models.DecimalField(max_digits=2, decimal_places=1)
-    ibu = models.DecimalField(max_digits=3, decimal_places=1)
+    abv = models.DecimalField(max_digits=3, decimal_places=1)
+    ibu = models.DecimalField(max_digits=4, decimal_places=1)
     brewery = models.CharField(max_length = 45)
     user = models.ManyToManyField(users, related_name="beer")
     created_at = models.DateTimeField(auto_now_add=True)
