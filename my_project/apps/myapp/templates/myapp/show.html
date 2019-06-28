@@ -1,30 +1,163 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Beer Information</title>
+    {% load static %}
+    <style>
+        /* *{
+            border:1px solid black;
+        } */
+    .row{
+      /* background-color: #3c81a4; */
+      /* opacity: .8; */
+      filter: alpha(opacity=1);
+      margin-left:20rem;
+    }
+    .card {
+      background-color: rgb(255,255,255,0.63);
+      min-height: 230px;
+    }
+    .row_divide{
+      margin-top: 20px;
+    }
+    .nav{
+        height:100px;
+        background-color: lightyellow;
+        
+    }
+    .btn-outline-primary{
+        margin-left:10px;
+    }
+    
+   
+    .box1{
+      margin-left:10px;
+      display:inline-block;
+      border: 1px solid black;
+      width:45%;
+    }
+    .box2{
+      margin-left:10px;
+      display:inline-block;
+      border: 1px solid black;
+      width:45%;
+    }
+    .box1 h4, .box1 p{
+      margin-left:5px;
+      margin-top:5px;
+    }
+    .box2 h4, .box2 p{
+      margin-left:5px;
+      margin-top:5px;
+    }
+    .discover1{
+      text-align: center;
+      color: black;
+    }
+    img{
+      opacity: .7;
+      padding: 10px;
+    }
+    
+    .picture{
+      color: white;
+      font-size: 30px;
+      text-shadow: 4px 3px 0 dimgray;
+    }
+    .discover{
+      color: rgb(218, 207, 207);
+      font-size: 40px;
+    }
+    footer{
+      background-color: white;
+      height: 40px;
+      text-align: center;
+      padding: 10px;
+      margin-top: 10px;
+    }
+    .beer_boxes{
+        border: 2px solid lightgray;
+        display: inline-block;
+        padding: 50px;
+        width: 325px;
+        border-radius: 10px;
+        margin: 15px;
+        
+    }
+    p{
+        padding: 30px;
+        text-align: center;
+        
+    }
+    body{
+        margin: 0 auto;
+    }
+    h2, h1{ 
+        text-align: center;
+        font-size: 70px;
+        color: #202c2d;
+        background: #FFFFFF;
+        text-shadow: 0 1px #808d93, -1px 0 #cdd2d5, -1px 2px #808d93, -2px 1px #cdd2d5, -2px 3px #808d93, -3px 2px #cdd2d5, -3px 4px #808d93, -4px 3px #cdd2d5, -4px 5px #808d93, -5px 4px #cdd2d5, -5px 6px #808d93, -6px 5px #cdd2d5, -6px 7px #808d93, -7px 6px #cdd2d5, -7px 8px #808d93, -8px 7px #cdd2d5;
+        
+    }
+    .container{
+        margin: 0 auto;
+    }
+    
+    </style>
 </head>
 <body>
-    <div class="header">
-        <h1>{{beer_info.name}} information</h1>
-        <a href="/thelogin">Dashboard</a>
-        <a href="/">Home</a>
-    </div>
-    <ul>
-        <li>
-            Type: {{beer_info.category}}
-        </li>
-        <li>
-            Brewery: {{beer_info.brewery}}
-        </li>
-        <li>
-            IBU: {{beer_info.ibu}}
-        </li>
-        <li>    
-            ABV: {{beer_info.abv}}
-        </li>
-    </ul>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+
+                  <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item">
+                      <a class="btn btn-outline-primary" href="/thelogin">Dashboard</a>
+                    </li>
+                    <li>
+                        <a class="btn btn-outline-primary" href="/">Home</a>
+
+                    </li>
+
+
+
+                  </ul>
+
+                </div>
+        </nav>
+        <div class="container">
+
+
+           <h2>Your Beer Info</h2>
+
+           <div class="beer_boxes">
+                <img src="{% static "myapp/images/type1.jpg" %}"/ width="200px" height="200px" style="border-bottom: 1px solid darkgray;">
+                <p>{{ beer_info.category }}</p>
+           </div>
+           <div class="beer_boxes">
+                <img src="{% static "myapp/images/name.jpg" %}"/ width="200px" height="200px" style="border-bottom: 1px solid darkgray;">
+                <p>{{ beer_info.name }}</p>
+           </div>
+           <div class="beer_boxes">
+                <img src="{% static "myapp/images/brewery1.jpg" %}"/ width="200px" height="200px" style="border-bottom: 1px solid darkgray;">
+                <p>{{ beer_info.brewery }}</p>
+           </div>
+           <div class="beer_boxes"> 
+                <img src="{% static "myapp/images/ibu.png" %}"/ width="200px" height="200px" style="border-bottom: 1px solid darkgray;">
+                <p>{{beer_info.ibu}}</p>
+            </div>
+          <div class="beer_boxes">
+                <img src="{% static "myapp/images/abv.jpg" %}"/ width="200px" height="200px" style="border-bottom: 1px solid darkgray;">
+                <p>{{beer_info.abv}} </p>  
+        </div>
+        <div class="beer_boxes">
+                <img src="{% static "myapp/images/rate.jpg" %}"/ width="200px" height="200px" style="border-bottom: 1px solid darkgray;">
+             <p>{{ beer_info.rating }}</p>   
+            </div>
+        </div>
 </body>
-</html>
+</html> 
